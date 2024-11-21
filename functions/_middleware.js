@@ -1,6 +1,6 @@
 const handleRequest = async (context) => {
   try {
-    const cfWorkerHeader = headers.get("cf-worker");
+    const cfWorkerHeader = context.request.headers.get("cf-worker");
     console.log("cfWorkerHeader", cfWorkerHeader);
     if (cfWorkerHeader === "static-web-sample.pages.dev") {
       console.log("cfWorkerHeader is matched");
