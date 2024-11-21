@@ -3,6 +3,7 @@ const handleRequest = async (context) => {
     const cfWorkerHeader = headers.get("cf-worker");
     console.log("cfWorkerHeader", cfWorkerHeader);
     if (cfWorkerHeader === "static-web-sample.pages.dev") {
+      console.log("cfWorkerHeader is matched");
       return context.next();
     }
 
@@ -11,6 +12,7 @@ const handleRequest = async (context) => {
     return Response.redirect(redirectUrl, 301);
   } catch (err) {
     console.error(err);
+    return context.next();
   }
 };
 
